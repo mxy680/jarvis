@@ -14,7 +14,9 @@ import (
 // NotifyPayload represents the JSON payload sent by jarvis-notify
 type NotifyPayload struct {
 	TranscriptPath string `json:"transcript_path"`
-	SessionID      string `json:"session_id,omitempty"`
+	SessionID      string `json:"session_id"`      // UUID for this terminal session
+	TTY            string `json:"tty"`             // e.g., /dev/ttys001
+	TerminalApp    string `json:"terminal_app"`    // "Terminal" or "iTerm"
 }
 
 // Handler processes incoming notifications

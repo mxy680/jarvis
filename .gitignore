@@ -1,0 +1,7 @@
+# Built binaries (at root level)
+/jarvis-notify
+/jarvisd
+
+# Swift build artifacts
+.build/
+swift/JarvisListen/.build/
