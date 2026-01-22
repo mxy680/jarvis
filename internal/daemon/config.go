@@ -10,14 +10,21 @@ import (
 
 // Config holds the daemon configuration
 type Config struct {
-	ClaudeAPIKey       string `yaml:"claude_api_key"`
-	PorcupineAccessKey string `yaml:"porcupine_access_key"`
-	WakeWord           string `yaml:"wake_word"`
-	Voice              string `yaml:"voice"`
-	TerminalApp        string `yaml:"terminal_app"`
-	SummaryMaxWords    int    `yaml:"summary_max_words"`
-	STTTimeoutSeconds  int    `yaml:"stt_timeout_seconds"`
-	SocketPath         string `yaml:"socket_path,omitempty"`
+	ClaudeAPIKey       string          `yaml:"claude_api_key"`
+	PorcupineAccessKey string          `yaml:"porcupine_access_key"`
+	WakeWord           string          `yaml:"wake_word"`
+	Voice              string          `yaml:"voice"`
+	TerminalApp        string          `yaml:"terminal_app"`
+	SummaryMaxWords    int             `yaml:"summary_max_words"`
+	STTTimeoutSeconds  int             `yaml:"stt_timeout_seconds"`
+	SocketPath         string          `yaml:"socket_path,omitempty"`
+	MultiTerminal      MultiTermConfig `yaml:"multi_terminal"`
+}
+
+// MultiTermConfig holds multi-terminal specific settings
+type MultiTermConfig struct {
+	Enabled               bool `yaml:"enabled"`
+	SessionTimeoutSeconds int  `yaml:"session_timeout_seconds"`
 }
 
 // DefaultConfig returns a configuration with sensible defaults
@@ -28,6 +35,10 @@ func DefaultConfig() *Config {
 		TerminalApp:       "Terminal",
 		SummaryMaxWords:   100,
 		STTTimeoutSeconds: 30,
+		MultiTerminal: MultiTermConfig{
+			Enabled:               true,
+			SessionTimeoutSeconds: 3600, // 1 hour
+		},
 	}
 }
 

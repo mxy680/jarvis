@@ -1,0 +1,38 @@
+# Jarvis Configuration Example
+# Copy this to ~/.jarvis/config.yaml and fill in your API keys
+
+# Claude API key (required)
+# Get yours at: https://console.anthropic.com/
+claude_api_key: "sk-ant-..."
+
+# Porcupine access key for wake word detection (required)
+# Get yours at: https://console.picovoice.ai/
+porcupine_access_key: "..."
+
+# Wake word to listen for
+# Options: jarvis, alexa, americano, blueberry, bumblebee, computer,
+#          grapefruit, grasshopper, hey google, hey siri, ok google,
+#          picovoice, porcupine, terminator
+wake_word: "jarvis"
+
+# Voice for text-to-speech
+# Run 'say -v ?' in Terminal to see available voices
+# Popular options: Samantha, Alex, Victoria, Daniel
+voice: "Samantha"
+
+# Maximum words for response summary
+summary_max_words: 100
+
+# Speech-to-text timeout in seconds
+# Recording stops after this duration or 2 seconds of silence
+stt_timeout_seconds: 30
+
+# Custom socket path (optional)
+# Default: ~/.jarvis/jarvis.sock
+# socket_path: "/tmp/jarvis.sock"
+
+# Multi-terminal support
+multi_terminal:
+  enabled: true
+  # Cleanup inactive sessions after this many seconds
+  session_timeout_seconds: 3600  # 1 hour
